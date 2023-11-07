@@ -1,15 +1,14 @@
-
 vim.g.mapleader = " "
 
 local keymap = vim.keymap -- for conciseness
 
 -- general keymaps
 
-keymap.set("i", "jk", "<ESC>") 
+keymap.set("i", "jk", "<ESC>")
 
 keymap.set("n", "<leader>nh", ":nohl<CR>")
 
-keymap.set("n", "x", "_x")
+-- keymap.set("n", "x", "_x")
 keymap.set("n", "<leader>+", "<C-a>")
 keymap.set("n", "<leader>-", "<C-x>")
 
@@ -23,7 +22,6 @@ keymap.set("n", "<leader>to", ":tabnew<CR>") -- open new tab
 keymap.set("n", "<leader>tx", ":tabclose<CR>") -- close curren tab
 keymap.set("n", "<leader>tn", ":tabn<CR>") -- go to next tab
 keymap.set("n", "<leader>tp", ":tabp<CR>") -- go to previous tab
-
 
 ----------------------
 -- Plugin Keybinds
