@@ -96,6 +96,23 @@ lspconfig["pyright"].setup({
 	filetypes = { "python" },
 })
 
+-- golang lsp conf
+lspconfig["gopls"].setup({
+	cmd = { "gopls" },
+	capabilities = capabilities,
+	settings = {
+		gopls = {
+			experimentalPostfixCompletions = true,
+			analysis = {
+				unusedparams = true,
+				shadow = true,
+			},
+			staticcheck = true,
+		},
+	},
+	on_attach = on_attach,
+})
+
 -- configure lua server (with special settings)
 lspconfig["lua_ls"].setup({
 	capabilities = capabilities,
