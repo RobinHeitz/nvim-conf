@@ -60,6 +60,8 @@ end
 lspconfig["html"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
+    filetypes = {"templ", "html"}
+
 })
 
 -- configure typescript server with plugin
@@ -98,19 +100,49 @@ lspconfig["pyright"].setup({
 
 -- golang lsp conf
 lspconfig["gopls"].setup({
-	cmd = { "gopls" },
-	capabilities = capabilities,
-	settings = {
-		gopls = {
-			experimentalPostfixCompletions = true,
-			analysis = {
-				unusedparams = true,
-				shadow = true,
-			},
-			staticcheck = true,
-		},
-	},
-	on_attach = on_attach,
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = {"gopls"},
+  filetypes = {"go", "gomod", "gowork",},
+  -- root_dir = util.root_pattern("go.work", "go.mod", ".git")
+  settings = {
+
+    gopls = {
+      completeUnimported = true,
+      usePlaceholders = true,
+    },
+  },
+})
+
+vim.filetype.add({
+  extension={
+    templ = "templ"
+  },
+})
+-- Format current buffer using LSP.
+vim.api.nvim_create_autocmd(
+  {
+    -- 'BufWritePre' event triggers just before a buffer is written to file.
+    "BufWritePre"
+  },
+  {
+    pattern = {"*.templ"},
+    callback = function()
+      -- Format the current buffer using Neovim's built-in LSP (Language Server Protocol).
+      vim.lsp.buf.format()
+    end,
+  }
+)
+
+lspconfig["templ"].setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+})
+
+lspconfig["htmx"].setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { "html", "templ"},
 })
 
 -- configure lua server (with special settings)

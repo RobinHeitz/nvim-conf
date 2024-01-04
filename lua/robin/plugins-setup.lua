@@ -106,6 +106,25 @@ return packer.startup(function(use)
 	-- git integration
 	use("lewis6991/gitsigns.nvim") -- show line modifications on left hand side
 
+    -- golang debugger config for delve
+    use("mfussenegger/nvim-dap")
+    use({
+      "leoluz/nvim-dap-go",
+      ft = "go",
+      dependencies = "mfussenegger/nvim-dap",
+      config = function (_, opts)
+        require("dap-go").setup(opts)
+      end
+  })
+
+-- install without yarn or npm
+    use({
+        "iamcco/markdown-preview.nvim",
+        run = function() vim.fn["mkdp#util#install"]() end,
+    })
+
+
+
 	if packer_bootstrap then
 		require("packer").sync()
 	end

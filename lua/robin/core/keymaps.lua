@@ -48,3 +48,32 @@ keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current c
 
 -- restart lsp server (not on youtube nvim video)
 keymap.set("n", "<leader>rs", ":LspRestart<CR>") -- mapping to restart lsp if necessary
+
+-- bind reload module
+vim.api.nvim_set_keymap("n", "<leader>nr", "<cmd>lua ReloadConfig()<CR>", { noremap = true, silent = false })
+
+
+-- markdown preview in browser
+
+keymap.set("n", "<leader>md", ":MarkdownPreview<CR>")
+
+------------------
+-- dap go debugger
+------------------
+keymap.set("n", "<leader>db", "<cmd> DapToggleBreakpoint <CR>")
+keymap.set("n", "<leader>dus",
+  function ()
+    local widgets = require("dap.ui.widgets");
+    local sidebar = widgets.sidebar(widgets.scopes);
+    sidebar.open();
+end)
+
+keymap.set("n", "<leader>dgt",
+  function ()
+    require("dap-go").debug_test();
+end)
+
+keymap.set("n", "<leader>dgl",
+function ()
+    require("dap-go").debug_last()
+end)
