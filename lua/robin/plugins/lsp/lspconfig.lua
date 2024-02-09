@@ -60,8 +60,7 @@ end
 lspconfig["html"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
-    filetypes = {"templ", "html"}
-
+	filetypes = { "templ", "html" },
 })
 
 -- configure typescript server with plugin
@@ -82,13 +81,15 @@ lspconfig["cssls"].setup({
 lspconfig["tailwindcss"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
+	filetypes = { "templ", "astro", "javascript", "typescript" },
+	init_options = { userLanguages = { templ = "html" } },
 })
 
 -- configure emmet language server
 lspconfig["emmet_ls"].setup({
 	capabilities = capabilities,
 	on_attach = on_attach,
-	filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
+	filetypes = { "templ", "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
 })
 
 -- configure python language server
@@ -100,49 +101,35 @@ lspconfig["pyright"].setup({
 
 -- golang lsp conf
 lspconfig["gopls"].setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
-  cmd = {"gopls"},
-  filetypes = {"go", "gomod", "gowork",},
-  -- root_dir = util.root_pattern("go.work", "go.mod", ".git")
-  settings = {
+	on_attach = on_attach,
+	capabilities = capabilities,
+	cmd = { "gopls" },
+	filetypes = { "go", "gomod", "gowork" },
+	-- root_dir = util.root_pattern("go.work", "go.mod", ".git")
+	settings = {
 
-    gopls = {
-      completeUnimported = true,
-      usePlaceholders = true,
-    },
-  },
+		gopls = {
+			completeUnimported = true,
+			usePlaceholders = true,
+		},
+	},
 })
 
 vim.filetype.add({
-  extension={
-    templ = "templ"
-  },
+	extension = {
+		templ = "templ",
+	},
 })
--- Format current buffer using LSP.
-vim.api.nvim_create_autocmd(
-  {
-    -- 'BufWritePre' event triggers just before a buffer is written to file.
-    "BufWritePre"
-  },
-  {
-    pattern = {"*.templ"},
-    callback = function()
-      -- Format the current buffer using Neovim's built-in LSP (Language Server Protocol).
-      vim.lsp.buf.format()
-    end,
-  }
-)
 
 lspconfig["templ"].setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
+	on_attach = on_attach,
+	capabilities = capabilities,
 })
 
 lspconfig["htmx"].setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
-  filetypes = { "html", "templ"},
+	on_attach = on_attach,
+	capabilities = capabilities,
+	filetypes = { "html", "templ" },
 })
 
 -- configure lua server (with special settings)
