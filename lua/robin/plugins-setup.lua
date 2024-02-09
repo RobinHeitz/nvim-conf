@@ -106,24 +106,35 @@ return packer.startup(function(use)
 	-- git integration
 	use("lewis6991/gitsigns.nvim") -- show line modifications on left hand side
 
-    -- golang debugger config for delve
-    use("mfussenegger/nvim-dap")
-    use({
-      "leoluz/nvim-dap-go",
-      ft = "go",
-      dependencies = "mfussenegger/nvim-dap",
-      config = function (_, opts)
-        require("dap-go").setup(opts)
-      end
-  })
+	-- golang debugger config for delve
+	use("mfussenegger/nvim-dap")
+	use({
+		"leoluz/nvim-dap-go",
+		ft = "go",
+		dependencies = "mfussenegger/nvim-dap",
+		config = function(_, opts)
+			require("dap-go").setup(opts)
+		end,
+	})
 
--- install without yarn or npm
-    use({
-        "iamcco/markdown-preview.nvim",
-        run = function() vim.fn["mkdp#util#install"]() end,
-    })
+	-- Markdown preview
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+	})
 
+	-- VimText & Stuff
+	use("lervag/vimtex")
 
+	use({
+		"L3MON4D3/LuaSnip",
+		-- follow latest release.
+		tag = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+		-- install jsregexp (optional!:).
+		run = "make install_jsregexp",
+	})
 
 	if packer_bootstrap then
 		require("packer").sync()

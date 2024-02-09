@@ -53,7 +53,6 @@ keymap.set("n", "<leader>rs", ":LspRestart<CR>") -- mapping to restart lsp if ne
 vim.api.nvim_set_keymap("n", "<leader>nr", "<cmd>lua ReloadConfig()<CR>", { noremap = true, silent = false })
 
 -- markdown preview in browser
-
 keymap.set("n", "<leader>md", ":MarkdownPreview<CR>")
 
 ------------------
