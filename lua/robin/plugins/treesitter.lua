@@ -4,12 +4,16 @@ if not status then
 	return
 end
 
+vim.cmd('autocmd FileType tex setlocal syntax=off')
+
+
 -- configure treesitter
 treesitter.setup({
 	-- enable syntax highlighting
 	highlight = {
 		enable = true,
 		additional_vim_regex_highlighting = false,
+        disable = {"tex"},
 	},
 	-- enable indentation
 	indent = { enable = true },

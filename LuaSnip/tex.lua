@@ -36,6 +36,9 @@ return {
 	s({ trig = ";a", snippetType = "autosnippet" }, { t("\\alpha") }),
 	s({ trig = ";b", snippetType = "autosnippet" }, { t("\\beta") }),
 	s({ trig = ";g", snippetType = "autosnippet" }, { t("\\gamma") }),
+	s({ trig = ";G", snippetType = "autosnippet" }, { t("\\Gamma") }),
+	s({ trig = ";phi", snippetType = "autosnippet" }, { t("\\phi") }),
+	s({ trig = ";Phi", snippetType = "autosnippet" }, { t("\\Phi") }),
 
 	s(
 		{ trig = "tii", dscr = "Expands 'tii' into LaTeX's textit{} command." },
@@ -44,14 +47,27 @@ return {
 		})
 	),
 
-	-- Combining text and insert nodes to create basic LaTeX commands
-	s({ trig = "tt", dscr = "Expands 'tt' into '\texttt{}'" }, fmta("\\texttt{<>}", { i(1) })),
 
-	s({ trig = "ff", dscr = "Expands 'ff' into '\frac{}{}'" }, fmta("\\frac{<>}{<>}", { i(1), i(2) })),
+    -- Maths 
+    s({ trig = "mt" }, { t("\\times") }), -- This is the cross for R x N 
+	s({ trig = "mv", dscr = "Writing vector (bold)" }, fmta("\\mathbf{<>}", { i(1) })),
+	s({ trig = "ms", dscr = "Writing Symbols like R or N" }, fmta("\\mathbb{<>}", { i(1) })),
+
+    -- Units 
+	s({ trig = "ui", dscr = "unit itensity in w/meter^2" }, fmta("\\SI{<>}{\\watt\\per\\meter\\squared}", { i(1) })),
+	s({ trig = "ud", dscr = "unit distance in meter" }, fmta("\\SI{<>}{\\meter}", { i(1) })),
+	s({ trig = "uv", dscr = "unit velocity in meter/s" }, fmta("\\SI{<>}{\\meter\\per\\second}", { i(1) })),
+	s({ trig = "ua", dscr = "unit acceleration in meter/sec^2" }, fmta("\\SI{<>}{\\meter\\per\\second\\squared}", { i(1) })),
+
+	-- combining text and insert nodes to create basic latex commands
+	s({ trig = "tt", dscr = "expands 'tt' into '\texttt{}'" }, fmta("\\texttt{<>}", { i(1) })),
+	s({ trig = "bf", dscr = "expands 'tt' into '\textbf{}'" }, fmta("\\textbf{<>}", { i(1) })),
+
+	s({ trig = "ff", dscr = "expands 'ff' into '\frac{}{}'" }, fmta("\\frac{<>}{<>}", { i(1), i(2) })),
 
 	s(
-		{ trig = "eq", dscr = "A LaTeX equation environment" },
-		fmta( -- The snippet code actually looks like the equation environment it produces.
+		{ trig = "eq", dscr = "a latex equation environment" },
+		fmta( -- the snippet code actually looks like the equation environment it produces.
 			[[
             \begin{equation}
                 <>
@@ -62,8 +78,8 @@ return {
 	),
 
 	s(
-		{ trig = "env", dscr = "A LaTeX environment" },
-		fmta( -- The snippet code actually looks like the equation environment it produces.
+		{ trig = "env", dscr = "a latex environment" },
+		fmta( -- the snippet code actually looks like the equation environment it produces.
 			[[
             \begin{<>}
                 <>
