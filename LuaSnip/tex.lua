@@ -9,7 +9,7 @@ local f = ls.function_node
 local d = ls.dynamic_node
 local fmt = require("luasnip.extras.fmt").fmt
 local fmta = require("luasnip.extras.fmt").fmta
-local rep = require("luasnip.extras").replocal
+local rep = require("luasnip.extras").rep
 
 -- This is the `get_visual` function I've been talking about.
 -- ----------------------------------------------------------------------------
@@ -78,15 +78,14 @@ return {
 	),
 
 	s(
-		{ trig = "env", dscr = "a latex environment" },
+		{ trig = "env", dscr = "a latex environment", snippetType="autosnippet"},
 		fmta( -- the snippet code actually looks like the equation environment it produces.
 			[[
             \begin{<>}
                 <>
             \end{<>}
           ]],
-			-- { i(1), i(2), rep(1) }
-			{ i(1), i(2), i(3) }
+			{ i(1), i(2), rep(1), }
 		)
 	),
 }
