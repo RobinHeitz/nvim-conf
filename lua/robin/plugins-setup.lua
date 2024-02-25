@@ -54,6 +54,8 @@ return packer.startup(function(use)
 	-- statusline
 	use("nvim-lualine/lualine.nvim")
 
+	use({ "akinsho/bufferline.nvim", tag = "*", requires = "nvim-tree/nvim-web-devicons" })
+
 	-- fuzzy finding w/ telescope
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" }) -- dependency for better sorting performance
 	use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" }) -- fuzzy finder
@@ -64,9 +66,15 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-path") -- source for file system paths
 
 	-- snippets
-	use("L3MON4D3/LuaSnip") -- snippet engine
 	use("saadparwaiz1/cmp_luasnip") -- for autocompletion
 	use("rafamadriz/friendly-snippets") -- useful snippets
+	use({
+		"L3MON4D3/LuaSnip",
+		-- follow latest release.
+		tag = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+		-- install jsregexp (optional!:).
+		run = "make install_jsregexp",
+	})
 
 	-- managing & installing lsp servers, linters & formatters
 	use("williamboman/mason.nvim") -- in charge of managing lsp servers, linters & formatters
@@ -117,8 +125,6 @@ return packer.startup(function(use)
 	-- 	end,
 	-- })
 
-
-
 	-- Markdown preview
 	use({
 		"iamcco/markdown-preview.nvim",
@@ -129,14 +135,6 @@ return packer.startup(function(use)
 
 	-- VimText & Stuff
 	use("lervag/vimtex")
-
-	use({
-		"L3MON4D3/LuaSnip",
-		-- follow latest release.
-		tag = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-		-- install jsregexp (optional!:).
-		run = "make install_jsregexp",
-	})
 
 	if packer_bootstrap then
 		require("packer").sync()

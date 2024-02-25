@@ -13,6 +13,12 @@ keymap.set("n", "<leader>nh", ":nohl<CR>")
 keymap.set("n", "<leader>+", "<C-a>")
 keymap.set("n", "<leader>-", "<C-x>")
 
+-- Map Control+P to bprevious
+vim.api.nvim_set_keymap("n", "<C-p>", ":bprevious<CR>", { noremap = true })
+
+-- Map Control+N to bnext
+vim.api.nvim_set_keymap("n", "<C-n>", ":bnext<CR>", { noremap = true })
+
 -- window management
 keymap.set("n", "<leader>sv", "<C-w>v") --split window vertically
 keymap.set("n", "<leader>sh", "<C-w>s") --split window horizontally
