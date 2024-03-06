@@ -10,6 +10,11 @@ opt.shiftwidth = 4
 opt.expandtab = true
 opt.autoindent = true
 
+vim.cmd([[
+                autocmd FileType python setlocal tabstop=4 shiftwidth=4 indent_type="Spaces"
+    autocmd FileType html setlocal tabstop=2 shiftwidth=2
+]])
+
 -- line wrapping
 opt.wrap = false
 

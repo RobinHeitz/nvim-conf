@@ -13,7 +13,7 @@ keymap.set("n", "<leader>nh", ":nohl<CR>")
 keymap.set("n", "<leader>+", "<C-a>")
 keymap.set("n", "<leader>-", "<C-x>")
 
--- Buffer settings 
+-- Buffer settings
 vim.api.nvim_set_keymap("n", "<C-p>", ":bprevious<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<C-n>", ":bnext<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>bd", ":bdelete<CR>", { noremap = true })
