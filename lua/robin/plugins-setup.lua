@@ -138,6 +138,13 @@ return packer.startup(function(use)
 	-- VimText & Stuff
 	use("lervag/vimtex")
 
+	-- Harpoon2
+	use({
+		"ThePrimeagen/harpoon",
+		branch = "harpoon2",
+		requires = { { "nvim-lua/plenary.nvim" } },
+	})
+
 	if packer_bootstrap then
 		require("packer").sync()
 	end
