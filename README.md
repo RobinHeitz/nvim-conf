@@ -2,27 +2,65 @@
 
 This config is inspired by https://www.youtube.com/watch?v=6pAG3BHurdM&ab_channel=JoseanMartinez
 
-## Setup
+## Setup config
 
-1. Install nvim
+```
+cd ~/.config
+git clone git@github.com:RobinHeitz/nvim-conf.git nvim
 
-1. Meslo nerd font:
+```
 
-   ```
-   brew tap homebrew/cask-fonts
-   brew install font-meslo-lg-nerd-font
-   ```
+Or clone it somewhere else & create a link:
 
-1. Install ripgrep
+```
+ln -s ~/path/to/my/nvim-setup ~/.config/nvim
+```
 
-1. Install lazygit:
+## Install Neovim
 
-   ```
-   brew install jesseduffield/lazygit/lazygit
-   ```
+### Mac
 
-1. Clone repo to ~/.config/nvim
+Install nvim, fonts & tools
 
-   ```
-   git clone ... nvim
-   ```
+```
+brew install neovim
+
+brew tap homebrew/cask-fonts
+
+brew install font-meslo-lg-nerd-font
+
+brew install ripgrep
+
+brew install jesseduffield/lazygit/lazygit
+
+```
+
+### Ubuntu
+
+Go to destination of nvim:
+
+```
+cd ~/Applications
+```
+
+Download
+
+```
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+chmod u+x nvim.appimage
+```
+
+Extract:
+
+```
+./nvim.appimage --appimage-extract
+./squashfs-root/AppRun --version
+mv squashfs-root nvim_app
+```
+
+Link nvim globally
+
+```
+sudo ln -s ~/Applications/nvim_app/AppRun /usr/bin/nvim
+rm nvim.appimage
+```
