@@ -6,6 +6,11 @@ return {
 
     conform.setup({
       formatters_by_ft = {
+        markdown = { "mdformat" },
+        -- markdown = { "prettier" },
+        latex = { "latexindent" },
+        templ = { "templ", "prettier" },
+        go = { "goimports", "gofmt" },
         javascript = { "prettier" },
         typescript = { "prettier" },
         javascriptreact = { "prettier" },
@@ -15,7 +20,6 @@ return {
         html = { "prettier" },
         json = { "prettier" },
         yaml = { "prettier" },
-        markdown = { "prettier" },
         graphql = { "prettier" },
         liquid = { "prettier" },
         lua = { "stylua" },

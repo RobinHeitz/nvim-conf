@@ -37,6 +37,9 @@ return {
         "emmet_ls",
         "prismals",
         "pyright",
+        "gopls",
+        "templ",
+        "htmx",
       },
     })
     mason_tool_installer.setup({

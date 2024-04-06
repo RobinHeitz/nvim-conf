@@ -114,6 +114,34 @@ return {
           filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
         })
       end,
+      ["templ"] = function()
+        lspconfig["templ"].setup({
+          capabilities = capabilities,
+        })
+      end,
+
+      ["gopls"] = function()
+        lspconfig["gopls"].setup({
+          capabilities = capabilities,
+          cmd = { "gopls" },
+          filetypes = { "go", "gomod", "gowork" },
+          -- root_dir = util.root_pattern("go.work", "go.mod", ".git")
+          settings = {
+            gopls = {
+              completeUnimported = true,
+              usePlaceholders = true,
+            },
+          },
+        })
+      end,
+
+      ["htmx"] = function()
+        lspconfig["htmx"].setup({
+          capabilities = capabilities,
+          filetypes = { "html", "templ" },
+        })
+      end,
+
       ["lua_ls"] = function()
         -- configure lua server (with special settings)
         lspconfig["lua_ls"].setup({
