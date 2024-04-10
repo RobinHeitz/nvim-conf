@@ -7,10 +7,9 @@ return {
     conform.setup({
       formatters_by_ft = {
         markdown = { "mdformat" },
-        -- markdown = { "prettier" },
         latex = { "latexindent" },
         templ = { "templ", "prettier" },
-        go = { "goimports", "gofmt" },
+        go = { "golines", "goimports", "goimports-reviser" },
         javascript = { "prettier" },
         typescript = { "prettier" },
         javascriptreact = { "prettier" },
@@ -24,6 +23,7 @@ return {
         liquid = { "prettier" },
         lua = { "stylua" },
         python = { "isort", "black" },
+        sh = { "shellcheck" },
       },
       format_on_save = {
         lsp_fallback = true,

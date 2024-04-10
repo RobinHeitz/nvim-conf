@@ -135,6 +135,20 @@ return {
         })
       end,
 
+      ["html"] = function()
+        lspconfig["html"].setup({
+          capabilities = capabilities,
+          filetypes = { "html", "templ" },
+        })
+      end,
+
+      ["tailwindcss"] = function()
+        lspconfig["tailwindcss"].setup({
+          capabilities = capabilities,
+          filetypes = { "html", "templ", "astro", "javascript", "react" },
+          init_options = { userLanguages = { templ = "html" } },
+        })
+      end,
       ["htmx"] = function()
         lspconfig["htmx"].setup({
           capabilities = capabilities,

@@ -44,12 +44,17 @@ return {
     })
     mason_tool_installer.setup({
       ensure_installed = {
+        "htmlbeautifier",
         "prettier",
         "stylua",
         "isort",
         "black",
         "pylint",
         "eslint_d",
+        "golangci-lint",
+        "gofumpt",
+        "golines",
+        "gopls",
       },
     })
   end,

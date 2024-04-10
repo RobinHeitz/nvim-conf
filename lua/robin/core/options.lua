@@ -42,3 +42,6 @@ opt.splitbelow = true -- split horizontal window to the bottom
 
 -- turn off swapfile
 opt.swapfile = false
+
+-- Add file extension, needed for lsp to pick up on .templ
+vim.filetype.add({ extension = { templ = "templ" } })
