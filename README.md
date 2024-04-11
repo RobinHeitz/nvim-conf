@@ -1,6 +1,6 @@
 # Nvim config setup
 
-This config is inspired by https://www.youtube.com/watch?v=6pAG3BHurdM&ab_channel=JoseanMartinez
+This config is inspired by [this video](https://www.youtube.com/watch?v=6pAG3BHurdM&ab_channel=JoseanMartinez)
 
 ## Setup config
 
