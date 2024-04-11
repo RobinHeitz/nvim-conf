@@ -2,6 +2,13 @@
 
 This config is inspired by [this video](https://www.youtube.com/watch?v=6pAG3BHurdM&ab_channel=JoseanMartinez)
 
+There are some dependencies for installing all the plugins, mainly package manager:
+
+- npm
+- cargo
+
+Make sure these are installed.
+
 ## Setup config
 
 ```
