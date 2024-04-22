@@ -14,8 +14,6 @@ end, { desc = "toggle diagnostickk" })
 keymap.set("n", "<leader>xo", "<cmd>DiagnosticToggle<CR>", { desc = "Toggle diagnostics" })
 
 -- QuickFix toggle command + binding
---
-
 vim.api.nvim_create_user_command("QuickFixToggle", function()
   local qf_exists = false
   for _, win in pairs(vim.fn.getwininfo()) do
