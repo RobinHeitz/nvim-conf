@@ -27,11 +27,6 @@ end
 
 return {
 
-  -- A snippet that expands the trigger "hi" into the string "Hello, world!".
-  s({ trig = "hi" }, { t("Hello, world!") }),
-  s({ trig = "foo" }, { t("Another snippet!") }),
-  s({ trig = "lines" }, { t("Line 1", "line 2", "Line 3") }),
-
   -- Trigger greek chars
   s({ trig = ";a", snippetType = "autosnippet" }, { t("\\alpha") }),
   s({ trig = ";b", snippetType = "autosnippet" }, { t("\\beta") }),
@@ -40,18 +35,25 @@ return {
   s({ trig = ";phi", snippetType = "autosnippet" }, { t("\\phi") }),
   s({ trig = ";Phi", snippetType = "autosnippet" }, { t("\\Phi") }),
 
+  -- Math operations
+  s({ trig = "mdot", snippetType = "autosnippet" }, { t("\\cdot") }),
+  s({ trig = "mt", snippetType = "autosnippet" }, { t("\\times") }), -- This is the cross for R x N
+  s({ trig = "mv", dscr = "Writing vector (bold)", snippetType = "autosnippet" }, fmta("\\mathbf{<>}", { i(1) })),
+  s({ trig = "ms", dscr = "Writing Symbols like R or N", snippetType = "autosnippet" }, fmta("\\mathbb{<>}", { i(1) })),
+
   s(
-    { trig = "tii", dscr = "Expands 'tii' into LaTeX's textit{} command." },
-    fmta("\\textit{<>}", {
-      d(1, get_visual),
-    })
+    { trig = "meq", dscr = "a latex equation environment" },
+    fmta( -- the snippet code actually looks like the equation environment it produces.
+      [[
+            \begin{equation}
+                <>
+            \end{equation}
+          ]],
+      { i(1) }
+    )
   ),
 
-  -- Maths
-  s({ trig = "mt" }, { t("\\times") }), -- This is the cross for R x N
-  s({ trig = "mv", dscr = "Writing vector (bold)" }, fmta("\\mathbf{<>}", { i(1) })),
-  s({ trig = "ms", dscr = "Writing Symbols like R or N" }, fmta("\\mathbb{<>}", { i(1) })),
-
+  s({ trig = "ff", dscr = "expands 'ff' into '\frac{}{}'" }, fmta("\\frac{<>}{<>}", { i(1), i(2) })),
   -- Units
   s({ trig = "ui", dscr = "unit itensity in w/meter^2" }, fmta("\\SI{<>}{\\watt\\per\\meter\\squared}", { i(1) })),
   s({ trig = "ud", dscr = "unit distance in meter" }, fmta("\\SI{<>}{\\meter}", { i(1) })),
@@ -63,24 +65,23 @@ return {
 
   -- combining text and insert nodes to create basic latex commands
   s({ trig = "tt", dscr = "expands 'tt' into '\texttt{}'" }, fmta("\\texttt{<>}", { i(1) })),
-  s({ trig = "bf", dscr = "expands 'tt' into '\textbf{}'" }, fmta("\\textbf{<>}", { i(1) })),
-
-  s({ trig = "ff", dscr = "expands 'ff' into '\frac{}{}'" }, fmta("\\frac{<>}{<>}", { i(1), i(2) })),
-
   s(
-    { trig = "eq", dscr = "a latex equation environment" },
-    fmta( -- the snippet code actually looks like the equation environment it produces.
-      [[
-            \begin{equation}
-                <>
-            \end{equation}
-          ]],
-      { i(1) }
-    )
+    { trig = "bf", dscr = "expands 'tt' into '\textbf{}'", snippetType = "autosnippet" },
+    fmta("\\textbf{<>}", { i(1) })
+  ),
+  s(
+    { trig = "tii", dscr = "Expands 'tii' into LaTeX's textit{} command." },
+    fmta("\\textit{<>}", {
+      d(1, get_visual),
+    })
   ),
 
+  -- References & Co.
+  s({ trig = "lacro", dscr = "refer to long acronym", snippetType = "autosnippet" }, fmta("\\acl{<>}", { i(1) })),
+  s({ trig = "sacro", dscr = "refer to short acronym", snippetType = "autosnippet" }, fmta("\\acs{<>}", { i(1) })),
+
   s(
-    { trig = "env", dscr = "a latex environment", snippetType = "autosnippet" },
+    { trig = "env", dscr = "a latex environment" },
     fmta( -- the snippet code actually looks like the equation environment it produces.
       [[
             \begin{<>}

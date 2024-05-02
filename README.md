@@ -71,3 +71,13 @@ Link nvim globally
 sudo ln -s ~/Applications/nvim_app/AppRun /usr/bin/nvim
 rm nvim.appimage
 ```
+
+ALTERNATIVE b/c of error with multiple parsers attatching:
+:echo nvim_get_runtime_file('parser', v:true)
+
+Install therefore with tar.gz, extract, move to /opt
+Then: 
+```
+ln -s /opt/nvim-linuxxxx/bin/nvim ~/.local/bin
+
+```

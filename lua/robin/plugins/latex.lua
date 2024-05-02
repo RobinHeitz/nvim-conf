@@ -1,6 +1,7 @@
 return {
   "lervag/vimtex",
   init = function()
+    vim.g.vimtex_quickfix_open_on_warning = 0
     -- Use init for configuration, don't use the more common "config".
     if vim.fn.has("mac") == 1 then
       vim.g.vimtex_view_method = "skim"
