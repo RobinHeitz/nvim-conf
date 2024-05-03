@@ -15,9 +15,10 @@ return {
     end
 
     vim.cmd([[
-
     nmap <localleader>v <plug>(vimtex-view)
-
     ]])
+
+    vim.keymap.set("n", "<leader>lc", "<cmd>VimtexCompile<CR>", { desc = "VimTex Compile" })
+    vim.keymap.set("n", "<leader>lx", "<cmd>VimtexClean<CR>", { desc = "VimTex Compile" })
   end,
 }
