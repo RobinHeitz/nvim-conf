@@ -127,20 +127,6 @@ return {
         })
       end,
 
-      ["ruff"] = function()
-        lspconfig["pyright"].setup({
-          capabilities = capabilities,
-          filetypes = { "python" },
-        })
-      end,
-
-      -- ["pyling"] = function()
-      --   lspconfig["pyright"].setup({
-      --     capabilities = capabilities,
-      --     filetypes = { "python" },
-      --   })
-      -- end,
-
       ["gopls"] = function()
         lspconfig["gopls"].setup({
           capabilities = capabilities,
