@@ -31,3 +31,9 @@ vim.api.nvim_create_user_command("QuickFixToggle", function()
 end, { desc = "toggle quickfix as horizontal split" })
 
 keymap.set("n", "<leader>co", "<cmd>QuickFixToggle<CR>", { desc = "toggle quickfix window" })
+
+-- dap-python run
+vim.api.nvim_create_user_command("DapPythonRun", function()
+  require("dap-python").test_method()
+end, { desc = "Run dap-python test_method()." })
+keymap.set("n", "<leader>dpr", "<cmd>DapPythonRun<CR>", { desc = "Run Python Debugger" })

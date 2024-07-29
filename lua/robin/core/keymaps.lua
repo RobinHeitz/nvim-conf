@@ -33,3 +33,6 @@ keymap.set("n", "<leader>cn", "<cmd>cn<CR>", { desc = "Next quickfix" }) --  mov
 keymap.set("n", "<leader>cp", "<cmd>cp<CR>", { desc = "Previous quickfix" }) --  move current buffer to new tab
 keymap.set("n", "<leader>cl", "<cmd>cl<CR>", { desc = "Show quickfix list" }) --  move current buffer to new tab
 keymap.set("n", "<leader>cx", "<cmd>cexpr []<CR>", { desc = "Clear quickfix list" }) --  move current buffer to new tab
+
+-- Dap setup
+keymap.set("n", "<leader>db", "<cmd> DapToggleBreakpoint <CR>", { desc = "Toggle Breakpoint" })
