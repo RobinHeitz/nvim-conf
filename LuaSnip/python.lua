@@ -60,4 +60,86 @@ def main(args=None):
       { i(1), i(2), rep(1) }
     )
   ),
+
+  s(
+    { trig = "roslaunch", dscr = "A basic ros2 python launch file" },
+    fmta( -- the snippet code actually looks like the equation environment it produces.
+      [[
+import os
+
+from ament_index_python.packages import get_package_share_directory
+from launch_ros.actions import Node
+
+from launch import LaunchDescription
+from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
+from launch.conditions import IfCondition
+from launch.launch_description_sources import PythonLaunchDescriptionSource
+from launch.substitutions import LaunchConfiguration
+
+
+def generate_args():
+    return [
+        DeclareLaunchArgument(
+            "launch_rviz", default_value="true", description="Whether to launch rviz."
+        ),
+    ]
+
+
+def generate_launch_description():
+
+    bringup_pkg = get_package_share_directory("lara_bringup")
+    rviz_config_file = os.path.join(bringup_pkg, "rviz", "cam_launch.rviz")
+
+    a_pkg_share = get_package_share_directory("disassembly_execution")
+    a_launch_file = os.path.join(a_pkg_share, "launch", "my_launch.launch.py")
+    launch_it = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(a_launch_file),
+        launch_arguments={"rviz": "false"}.items(),
+    )
+
+    return LaunchDescription(
+        [
+            *generate_args(),
+            launch_it,
+            Node(
+                package="",
+                executable="",
+                output="",
+                name="",
+                arguments=[
+                    "--ros-args",
+                    "--log-level",
+                    "ERROR",
+                ],
+                parameters=[
+                    {"some_param_value": ""},
+                ],
+            ),
+            Node(
+                condition=IfCondition(LaunchConfiguration("launch_rviz")),
+                package="rviz2",
+                executable="rviz2",
+                output="screen",
+                arguments=["-d", rviz_config_file],
+            ),
+            Node(
+                package="tf2_ros",
+                executable="static_transform_publisher",
+                output="screen",
+                arguments=[
+                    "--frame-id",
+                    "frameA",
+                    "--child-frame-id",
+                    "frameB",
+                    "--yaw",
+                    "-1.5708",
+                ],
+            ),
+        ]
+    )
+
+          ]],
+      {}
+    )
+  ),
 }
