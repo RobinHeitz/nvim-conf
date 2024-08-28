@@ -49,6 +49,7 @@ return {
         "stylua",
         "ruff",
         "mypy",
+        "markdownlint",
         "debugpy",
         "isort",
         "black",
