@@ -51,6 +51,7 @@ return {
         "mypy",
         "markdownlint",
         "debugpy",
+        "markdownlint",
         "isort",
         "black",
         "eslint_d",
