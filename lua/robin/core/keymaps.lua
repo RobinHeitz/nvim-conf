@@ -39,3 +39,9 @@ keymap.set("n", "<leader>db", "<cmd> DapToggleBreakpoint <CR>", { desc = "Toggle
 
 -- Remap move to opening and closing brackets
 keymap.set("n", "t", "%", { desc = "Move to start/ end of function scope" }) -- increment
+
+--
+keymap.set("n", "ff", "<cmd> AerialToggle<CR>", { desc = "Toggle Aerial on right side" })
+keymap.set("n", "<leader>fn", "<cmd> AerialNavToggle<CR>", { desc = "Toggle Aerial nav window" })
+keymap.set("n", "}", "<cmd> AerialNext<CR>", { desc = "Go to next function" })
+keymap.set("n", "{", "<cmd> AerialPrev<CR>", { desc = "Go to previous function" })
