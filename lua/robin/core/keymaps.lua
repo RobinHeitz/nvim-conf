@@ -36,3 +36,6 @@ keymap.set("n", "<leader>cx", "<cmd>cexpr []<CR>", { desc = "Clear quickfix list
 
 -- Dap setup
 keymap.set("n", "<leader>db", "<cmd> DapToggleBreakpoint <CR>", { desc = "Toggle Breakpoint" })
+
+-- Remap move to opening and closing brackets
+keymap.set("n", "t", "%", { desc = "Move to start/ end of function scope" }) -- increment
